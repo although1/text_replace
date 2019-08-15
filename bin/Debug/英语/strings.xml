@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">Factory Menu</string>
+
+    <!-- For ADC Adjust -->
+
+    <string name="str_factory_adc">ADC Adjust</string>
+    <string name="str_factory_adc_source">Source</string>
+    <string name="str_factory_adc_rgain">R Gain</string>
+    <string name="str_factory_adc_ggain">G Gain</string>
+    <string name="str_factory_adc_bgain">B Gain</string>
+    <string name="str_factory_adc_roffset">R Offset</string>
+    <string name="str_factory_adc_goffset">G Offset</string>
+    <string name="str_factory_adc_boffset">B Offset</string>
+    <string name="str_factory_adc_phase">phase</string>
+    <string name="str_factory_adc_autoadjust">Auto Tune</string>
+    <string name="str_factory_adc_autoadjust_val">Please Wait!</string>
+    <string name="str_factory_adc_autoadjust_ok">success</string>
+    <string name="str_factory_adc_autoadjust_failed">failed</string>

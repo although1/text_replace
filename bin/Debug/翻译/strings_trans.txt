@@ -1,0 +1,14 @@
+﻿m 0  工厂菜单
+m 1  ADC Adjust
+m 2  Source
+m 3  R Gain
+m 4  G Gain
+m 5  B Gain
+m 6  R Offset
+m 7  G Offset
+m 8  B Offset
+m 9  phase
+m 10  Auto Tune
+m 11  请等待!
+m 12  成功
+m 13  失败
