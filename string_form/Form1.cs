@@ -45,14 +45,19 @@ namespace string_form
                 while ((content = sr.ReadLine()) != null)
                 {
                     int i = content.IndexOf(">");
-                    //int x = content.IndexOf("<",9);
+                    //Console.WriteLine("i = {0}", i);
                     if (i == -1) continue;
+                    //判断是否存在<，不存在就进入下一个循环
+                    int y = content.IndexOf("<");
+                    //Console.WriteLine("y = {0}", y);
+                    if (y == -1) continue;
+                    //判断是否在9个字符以后存在<，说明存在合法的字符串
                     int x = content.IndexOf("<",9);
+                    //Console.WriteLine("x = {0}", x);
                     if (x == -1) continue;
                     string[] sArray = content.Split('>');
                     string[] sArray1 = sArray[1].Split('<');
                     sw.WriteLine("m "+a+"  "+ sArray1[0].ToString());
-                    //sw.WriteLine(sArray1[0].ToString());
                     a++;
                 }
             }
@@ -95,16 +100,31 @@ namespace string_form
                 while (true)
                 {
                     temp = orgCodeStream.ReadLine();
-                    if (temp.Equals(null)) System.Console.WriteLine("Error1");
-                    if (temp.IndexOf("\">") != -1) break;
-                    else if (!String.IsNullOrEmpty(newCode)) newCode = String.Concat(newCode, "\r\n", temp);
-                    else newCode = String.Concat(newCode, temp);
+                    if (temp.Equals(null))
+                        Console.WriteLine("空文本");
+                    //下面这行实际是判断是否存在 ">   存在则跳出循环
+                    if ((temp.IndexOf("<string") != -1)&&(temp.IndexOf("\">") != -1))
+                    {
+                        Console.WriteLine(" Exist <string and \\>  ");
+                        break;
+                    }
+                    else if (!String.IsNullOrEmpty(newCode))
+                        newCode = String.Concat(newCode, "\r\n", temp);
+                    else {
+                        newCode = String.Concat(newCode, temp);
+                    }
                 }
+                //将每行的字符用>分开，
                 string[] sArray = temp.Split('>');
+                //if (!String.IsNullOrEmpty(sArray[1]))
+                //Console.WriteLine("sArray_b[0] = {0} ,sArray_b[1] = {1}", sArray[0], sArray[1]);
                 sArray[1] = sArray[1].Replace(jp.Substring(jp.IndexOf("  ") + 2), chs.Substring(chs.IndexOf("  ") + 2));
+                //Console.WriteLine("sArray[0] = {0} ,sArray[1] = {1}", sArray[0], sArray[1]);
                 // temp = temp.Replace(jp.Substring(jp.IndexOf("  ") + 2), chs.Substring(chs.IndexOf("  ") + 2));
-                if (!String.IsNullOrEmpty(newCode)) newCode = String.Concat(newCode, "\r\n", sArray[0] + ">" + sArray[1] + ">");
-                else newCode = String.Concat(newCode, sArray[0] + sArray[1]);
+                if (!String.IsNullOrEmpty(newCode)) 
+                    newCode = String.Concat(newCode, "\r\n", sArray[0] + ">" + sArray[1] + ">");
+                else
+                    newCode = String.Concat(newCode, sArray[0] + sArray[1]);
             }
 
             temp = orgCodeStream.ReadLine();
